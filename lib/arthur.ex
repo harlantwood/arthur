@@ -16,7 +16,7 @@ defmodule Arthur do
   end
 
   defp run(cmd) do
-                Bunt.puts [:gold, "\n====> #{cmd}\n"]
+    Bunt.puts([:lightcyan, "\n====> #{cmd}\n"])
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
     {output, code} = System.cmd(command, args)
@@ -40,3 +40,12 @@ defmodule Arthur do
     IO.puts("\n#{msg}\n")
   end
 end
+
+
+#darkblue      mediumblue    darkgreen     darkslategray darkcyan
+#deepskyblue   springgreen   aqua          dimgray       steelblue
+#darkred       darkmagenta   olive         chartreuse    aquamarine
+#greenyellow   chocolate     goldenrod     lightgray     beige
+#lightcyan     fuchsia       orangered     hotpink       darkorange
+#coral         orange        gold          khaki         moccasin
+#mistyrose     lightyellow
