@@ -10,6 +10,12 @@ defmodule Arthur do
       System.halt(code)
     end
 
+    {output, code} = System.cmd("mix", ["format", "--check-formatted"])
+    IO.puts output
+    unless (code === 0) do
+      System.halt(code)
+    end
+
     {output, code} = System.cmd("git", ["push", "origin", "HEAD"])
     IO.puts output
     unless (code === 0) do
