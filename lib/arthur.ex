@@ -20,10 +20,11 @@ defmodule Arthur do
     |> IO.ANSI.format()
     |> IO.puts()
 
-    IO.puts(IO.ANSI.format(["Hello, ", :red, :bright, "world!"], true))
+#    IO.puts(IO.ANSI.format(["Hello, ", :red, :bright, "world!"], true))
+    IO.puts(Bunt.ANSI.format(["Hello, ", :red, :bright, "world!"], true))
 
 
-    Bunt.puts([:hotpink, "\n====> #{cmd}\n"], true)
+#    Bunt.ANSI.format([:hotpink, "\n====> #{cmd}\n"], true)
 
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
