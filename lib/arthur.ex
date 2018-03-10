@@ -16,7 +16,7 @@ defmodule Arthur do
   end
 
   defp run(cmd) do
-    IO.puts("\n====> #{cmd}\n")
+                Bunt.puts [:gold, "\n====> #{cmd}\n"]
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
     {output, code} = System.cmd(command, args)
