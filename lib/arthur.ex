@@ -6,7 +6,7 @@ defmodule Arthur do
   def main(["shipit"]) do
     check_clean()
     run("mix test --cover")
-    run("mix format --check-formatted")
+    run("mix format")
     check_clean()
     run("git push origin HEAD")
   end
