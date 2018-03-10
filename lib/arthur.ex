@@ -1,6 +1,6 @@
 defmodule Arthur do
   def main([]) do
-    IO.puts("you need args...")
+    error("you need args...")
   end
 
   def main(["shipit"]) do
@@ -39,7 +39,7 @@ defmodule Arthur do
   end
 
   defp error(msg) do
-    IO.puts(Bunt.ANSI.format([:red, "\n#{msg}\n"], true))
+    IO.puts(Bunt.ANSI.format([:bright, :red, "\n#{msg}\n"], true))
   end
 end
 
