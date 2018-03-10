@@ -34,13 +34,13 @@ defmodule Arthur do
     {output, _code} = System.cmd("git", ["status", "--porcelain"])
 
     if String.length(String.trim(output)) > 0 do
-      error('Please stash or commit changes first')
+      error('Please stash or commit changes')
       System.halt(1)
     end
   end
 
   defp error(msg) do
-    colorize(msg, [:bright, :red])
+    colorize("\n#{msg}\n", [:bright, :red])
   end
 
   defp colorize(msg, colors) do
