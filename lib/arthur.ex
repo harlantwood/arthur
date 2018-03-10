@@ -16,8 +16,8 @@ defmodule Arthur do
   end
 
   defp run(cmd) do
-    IO.puts(Bunt.ANSI.format([:magenta, :bright, "\n====> #{cmd}\n"], true))
-#    IO.puts(Bunt.ANSI.format(["Hello, ", :magenta, :bright, "world!"], true))
+    IO.puts(Bunt.ANSI.format([:cyan, :bright, "\n====> #{cmd}\n"], true))
+    #    IO.puts(Bunt.ANSI.format(["Hello, ", :magenta, :bright, "world!"], true))
 
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
