@@ -12,14 +12,13 @@ defmodule Arthur do
   end
 
   def main(argv) do
-    IO.puts("unexpected arguments #{argv}")
+    IO.puts("unexpected arguments #{inspect(argv)}")
   end
 
   defp run(cmd) do
     IO.puts("\n====> #{cmd}\n")
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
-    # IO.inspect([command, args])
     {output, code} = System.cmd(command, args)
     IO.puts(output)
 
