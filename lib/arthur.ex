@@ -16,7 +16,7 @@ defmodule Arthur do
   end
 
   defp run(cmd) do
-    colorize(cmd, [:color123])
+    colorize("\n====> #{cmd}\n", [:color123])
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
     {output, code} = System.cmd(command, args)
