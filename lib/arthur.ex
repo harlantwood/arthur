@@ -30,7 +30,7 @@ defmodule Arthur do
 
   defp check_clean do
     {output, _code} = System.cmd("git", ["status", "--porcelain"])
-    if String.length(String.trim(output)) do
+    if String.length(String.trim(output) > 0) do
       error 'Please stash or commit changes first'
       System.halt(1)
     end
