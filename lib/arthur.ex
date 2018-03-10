@@ -16,12 +16,12 @@ defmodule Arthur do
   end
 
   defp run(cmd) do
-#    ["Hello, ", :red, :bright, "world!", true]
-#    |> IO.ANSI.format()
-#    |> IO.puts()
+    #    ["Hello, ", :red, :bright, "world!", true]
+    #    |> IO.ANSI.format()
+    #    |> IO.puts()
 
     #    IO.puts(IO.ANSI.format(["Hello, ", :red, :bright, "world!"], true))
-    IO.puts(Bunt.ANSI.format(["Hello, ", :red, :bright, "world!"], true))
+    IO.puts(Bunt.ANSI.format(["Hello, ", :darkmagenta, :bright, "world!"], true))
 
     #    Bunt.ANSI.format([:hotpink, "\n====> #{cmd}\n"], true)
 
