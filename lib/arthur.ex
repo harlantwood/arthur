@@ -12,7 +12,7 @@ defmodule Arthur do
   end
 
   def main(argv) do
-    IO.puts("unexpected arguments #{inspect(argv)}")
+    error("unexpected arguments #{inspect(argv)}")
   end
 
   defp run(cmd) do
@@ -39,7 +39,7 @@ defmodule Arthur do
   end
 
   defp error(msg) do
-    IO.puts("\n#{msg}\n")
+    IO.puts(Bunt.ANSI.format([:red, "\n#{msg}\n"], true))
   end
 end
 
