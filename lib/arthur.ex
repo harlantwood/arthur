@@ -22,8 +22,8 @@ defmodule Arthur do
 
     IO.puts(IO.ANSI.format(["Hello, ", :red, :bright, "world!"], true))
 
-    [:hotpink, "\n====> #{cmd}\n", true]
-    |> Bunt.puts()
+
+    Bunt.puts([:hotpink, "\n====> #{cmd}\n"], true)
 
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
