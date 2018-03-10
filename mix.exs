@@ -9,7 +9,7 @@ defmodule Arthur.MixProject do
       deps: deps(),
       escript: [
         main_module: Arthur
-      ],
+      ]
     ]
   end
 
