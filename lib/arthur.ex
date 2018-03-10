@@ -16,6 +16,10 @@ defmodule Arthur do
   end
 
   defp run(cmd) do
+    ["Hello, ", :red, :bright, "world!"]
+    |> IO.ANSI.format
+    |> IO.puts
+
     [:hotpink, "\n====> #{cmd}\n"]
     |> Bunt.puts()
 
