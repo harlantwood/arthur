@@ -16,9 +16,7 @@ defmodule Arthur do
   end
 
   defp run(cmd) do
-    IO.puts(Bunt.ANSI.format([:color123, "\n====> #{cmd}\n"], true))
-    #    IO.puts(Bunt.ANSI.format(["Hello, ", :magenta, :bright, "world!"], true))
-
+    colorize(cmd, [:color123])
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
     {output, code} = System.cmd(command, args)
@@ -39,14 +37,12 @@ defmodule Arthur do
   end
 
   defp error(msg) do
-    IO.puts(Bunt.ANSI.format([:bright, :red, "\n#{msg}\n"], true))
+    colorize(msg, [:bright, :red])
+  end
+
+  defp colorize(msg, colors) do
+    IO.puts(Bunt.ANSI.format(colors ++ [msg], true))
   end
 end
 
-# darkblue      mediumblue    darkgreen     darkslategray darkcyan
-# deepskyblue   springgreen   aqua          dimgray       steelblue
-# darkred       darkmagenta   olive         chartreuse    aquamarine
-# greenyellow   chocolate     goldenrod     lightgray     beige
-# lightcyan     fuchsia       orangered     hotpink       darkorange
-# coral         orange        gold          khaki         moccasin
-# mistyrose     lightyellow
+# COLORS: https://github.com/rrrene/bunt#256-colors
