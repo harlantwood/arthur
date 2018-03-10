@@ -4,22 +4,23 @@ defmodule Arthur do
   end
 
   def main(["shipit"]) do
-    {output, code} = System.cmd("mix", ["test", "--cover"])
-    IO.puts(output)
+    check_clean()
+    run("mix test --cover")
+    run("mix format --check-formatted")
+    check_clean()
+    run("git push origin HEAD")
+  end
 
-    unless code === 0 do
-      System.halt(code)
-    end
+  def main(argv) do
+    IO.puts("unexpected arguments #{argv}")
+  end
 
-    #    {output, code} = System.cmd("mix", ["format", "--check-formatted"])
-    {output, code} = System.cmd("mix", ["format"])
-    IO.puts(output)
-
-    unless code === 0 do
-      System.halt(code)
-    end
-
-    {output, code} = System.cmd("git", ["push", "origin", "HEAD"])
+  defp run(cmd) do
+    IO.puts("\n====> #{cmd}\n")
+    tokens = Regex.split(~r/\s+/, cmd)
+    [command | args ] = tokens
+    #    IO.inspect([command, args])
+    {output, code} = System.cmd(command, args)
     IO.puts(output)
 
     unless code === 0 do
@@ -27,7 +28,15 @@ defmodule Arthur do
     end
   end
 
-  def main(argv) do
-    IO.puts("unexpected arguments #{argv}")
+  defp check_clean do
+    {output, _code} = System.cmd("git", ["status", "--porcelain"])
+    if String.length(String.trim(output)) do
+      error 'Please stash or commit changes first'
+      System.halt(1)
+    end
+  end
+
+  defp error(msg) do
+    IO.puts("\n#{msg}\n")
   end
 end
