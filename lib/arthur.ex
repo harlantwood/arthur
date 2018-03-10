@@ -19,7 +19,7 @@ defmodule Arthur do
     IO.puts("\n====> #{cmd}\n")
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args ] = tokens
-    #    IO.inspect([command, args])
+    # IO.inspect([command, args])
     {output, code} = System.cmd(command, args)
     IO.puts(output)
 
@@ -30,7 +30,7 @@ defmodule Arthur do
 
   defp check_clean do
     {output, _code} = System.cmd("git", ["status", "--porcelain"])
-    if String.length(String.trim(output) > 0) do
+    if String.length(String.trim(output)) > 0 do
       error 'Please stash or commit changes first'
       System.halt(1)
     end
