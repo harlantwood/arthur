@@ -20,6 +20,7 @@ defmodule Arthur do
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
     {output, code} = System.cmd(command, args)
+
     if String.length(String.trim(output)) > 0 do
       IO.puts(output)
     end
