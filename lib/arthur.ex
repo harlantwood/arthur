@@ -28,10 +28,13 @@ defmodule Arthur do
     unless code === 0 do
       System.halt(code)
     end
+
+    {output, code}
   end
 
   defp check_clean do
-    {output, _code} = System.cmd("git", ["status", "--porcelain"])
+    {output, _code} = run("git status --porcelain")
+#    {output, _code} = System.cmd("git", ["status", "--porcelain"])
 
     if String.length(String.trim(output)) > 0 do
       error('Please stash or commit changes')
@@ -40,7 +43,7 @@ defmodule Arthur do
   end
 
   defp error(msg) do
-    colorize("\n#{msg}\n", [:bright, :red])
+    colorize("#{msg}\n", [:bright, :red])
   end
 
   defp colorize(msg, colors) do
