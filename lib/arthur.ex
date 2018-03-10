@@ -16,8 +16,8 @@ defmodule Arthur do
   end
 
   defp run(cmd) do
-    [:cyan, "\n====> #{cmd}\n"]
-    |> Bunt.puts
+    [:hotpink, "\n====> #{cmd}\n"]
+    |> Bunt.puts()
 
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
