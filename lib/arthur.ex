@@ -1,18 +1,17 @@
 defmodule Arthur do
-  @moduledoc """
-  Documentation for Arthur.
-  """
+  def main([]) do
+    IO.puts("you need args...")
+  end
 
-  @doc """
-  Hello world.
+  def main(["shipit"]) do
+    {output, code} = System.cmd("mix", ["test", "--cover"])
+    IO.puts output
+    unless (code === 0) do
+      System.halt(code)
+    end
+  end
 
-  ## Examples
-
-      iex> Arthur.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def main(argv) do
+    IO.puts("unexpected arguments #{argv}")
   end
 end
