@@ -9,7 +9,7 @@ defmodule Arthur do
     run("mix test --cover")
     run("mix format")
     check_clean()
-    run("git push origin HEAD")
+    run("git push origin HEAD #{String.join(opts, " ")}")
   end
 
   def main(["ci"]) do
@@ -22,6 +22,7 @@ defmodule Arthur do
   end
 
   defp run(cmd) do
+    cmd = String.trim(cmd)
     colorize("\n====> #{cmd}\n", [:color123])
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
