@@ -62,12 +62,13 @@ defmodule Arthur do
 
     if String.length(String.trim(output)) > 0 do
       error('Please stash or commit changes')
-      System.halt(1)
+      
     end
   end
 
   defp error(msg) do
     colorize("#{msg}\n", [:bright, :red])
+  System.halt(1)
   end
 
   defp colorize(msg, colors) do
