@@ -8,14 +8,11 @@ defmodule Arthur do
   end
 
   def main(["push" | opts]) do
-    local_config = Application.get_env(:arthur, :push)
-    post = local_config[:post] || []
-
     check_clean()
     run("mix deps.get")
     run("mix test --cover")
     fix()
-    Enum.each(post, fn cmd -> run(cmd) end)
+    run_hooks(:push, :post)
     check_clean()
     run("git push origin HEAD #{Enum.join(opts, " ")}")
   end
@@ -35,6 +32,12 @@ defmodule Arthur do
 
   defp fix() do
     run("mix format")
+  end
+
+  defp run_hooks(arthur_command, timing) do
+    local_config = Application.get_env(:arthur, arthur_command)
+    shell_commands = local_config[timing] || []
+    Enum.each(shell_commands, fn cmd -> run(cmd) end)
   end
 
   defp run(cmd) do
