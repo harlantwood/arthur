@@ -21,7 +21,7 @@ defmodule Arthur do
     post = local_config[:post] || []
     run("mix test --cover")
     run("mix format --check-formatted")
-    Enum.each(post, fn(cmd) -> run(cmd) end)
+    Enum.each(post, fn cmd -> run(cmd) end)
   end
 
   def main(argv) do
