@@ -3,22 +3,33 @@ defmodule Arthur do
     error("you need args...")
   end
 
+  def main(["fix"]) do
+    fix()
+  end
+
   def main(["push" | opts]) do
     check_clean()
     run("mix deps.get")
     run("mix test --cover")
-    run("mix format")
+    fix()
     check_clean()
     run("git push origin HEAD #{Enum.join(opts, " ")}")
   end
 
   def main(["ci"]) do
+    local_config = Application.get_env(:arthur, :ci)
+    post = local_config[:post] || []
     run("mix test --cover")
     run("mix format --check-formatted")
+    Enum.each(post, fn(cmd) -> run(cmd) end)
   end
 
   def main(argv) do
     error("unexpected arguments #{inspect(argv)}")
+  end
+
+  defp fix() do
+    run("mix format")
   end
 
   defp run(cmd) do
