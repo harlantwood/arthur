@@ -9,6 +9,9 @@ config :arthur, :push,
   ]
 
 config :arthur, :ci,
+  pre: [
+    "echo 'Running `pre` hook during `ci` command'"
+  ],
   post: [
     "echo 'Running `post` hook during `ci` command'"
   ]
