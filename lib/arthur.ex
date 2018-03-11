@@ -1,4 +1,10 @@
+alias Bunt.ANSI, as: BuntANSI
+
 defmodule Arthur do
+  @moduledoc """
+  Arthur helps you keep your Elixir code quality high!
+  """
+
   def main([]) do
     error("you need args...")
   end
@@ -35,15 +41,15 @@ defmodule Arthur do
     error("unexpected arguments #{inspect(argv)}")
   end
 
-  def prereqs() do
+  def prereqs do
     run("mix deps.get")
   end
 
-  defp fix() do
+  defp fix do
     run("mix format")
   end
 
-  defp quality() do
+  defp quality do
     run("mix test --cover")
     run("mix credo --all --strict")
   end
@@ -86,7 +92,8 @@ defmodule Arthur do
   end
 
   defp colorize(msg, colors) do
-    IO.puts(Bunt.ANSI.format(colors ++ [msg], true))
+    # credo:disable-for-next-line Credo.Check.Refactor.AppendSingleItem
+    IO.puts(BuntANSI.format(colors ++ [msg], true))
   end
 end
 
