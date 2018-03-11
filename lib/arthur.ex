@@ -14,7 +14,7 @@ defmodule Arthur do
 
   def main(["ci"]) do
     run("mix test --cover")
-    run("mix format --verify")
+    run("mix format --check-formatted")
   end
 
   def main(argv) do
