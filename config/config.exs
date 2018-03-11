@@ -1,14 +1,14 @@
 use Mix.Config
 
 config :arthur, :push,
-       post: [
-         "echo 'Running :post hook during :push command'"
-       ]
+  post: [
+    "echo 'Running `post` hook during `push` command'"
+  ]
 
 config :arthur, :ci,
-       post: [
-         "echo 'Running :post hook during :ci command'"
-       ]
+  post: [
+    "echo 'Running `post` hook during `ci` command'"
+  ]
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
@@ -36,4 +36,3 @@ config :arthur, :ci,
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
-
