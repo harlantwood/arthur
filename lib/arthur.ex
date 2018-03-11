@@ -9,7 +9,7 @@ defmodule Arthur do
     run("mix test --cover")
     run("mix format")
     check_clean()
-    run("git push origin HEAD #{String.join(opts, " ")}")
+    run("git push origin HEAD #{Enum.join(opts, " ")}")
   end
 
   def main(["ci"]) do
