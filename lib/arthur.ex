@@ -19,12 +19,10 @@ defmodule Arthur do
   end
 
   def main(["ci"]) do
-    local_config = Application.get_env(:arthur, :ci)
-    post = local_config[:post] || []
-
+    run_hooks(:ci, :pre)
     run("mix test --cover")
     run("mix format --check-formatted")
-    Enum.each(post, fn cmd -> run(cmd) end)
+    run_hooks(:ci, :post)
   end
 
   def main(argv) do
