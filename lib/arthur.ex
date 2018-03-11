@@ -23,7 +23,7 @@ defmodule Arthur do
 
   defp run(cmd) do
     cmd = String.trim(cmd)
-    colorize("\n→→→ #{cmd}\n", [:color123])
+    colorize("\n→ → #{cmd}\n", [:color123])
     tokens = Regex.split(~r/\s+/, cmd)
     [command | args] = tokens
     {output, code} = System.cmd(command, args)
