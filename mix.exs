@@ -7,9 +7,7 @@ defmodule Arthur.MixProject do
       version: "0.1.0",
       elixir: "~> 1.6",
       deps: deps(),
-      escript: [
-        main_module: Arthur
-      ]
+      test_coverage: [tool: Coverex.Task, coveralls: true, ignore_modules: []]
     ]
   end
 

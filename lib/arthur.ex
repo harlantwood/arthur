@@ -3,12 +3,17 @@ defmodule Arthur do
     error("you need args...")
   end
 
-  def main(["shipit"]) do
+  def main(["push"]) do
     check_clean()
     run("mix test --cover")
     run("mix format")
     check_clean()
     run("git push origin HEAD")
+  end
+
+  def main(["ci"]) do
+    run("mix test --cover")
+    run("mix format --verify")
   end
 
   def main(argv) do
