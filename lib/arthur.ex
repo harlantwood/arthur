@@ -3,6 +3,11 @@ defmodule Arthur do
     error("you need args...")
   end
 
+  def main(["check"]) do
+    prereqs()
+    quality()
+  end
+
   def main(["fix"]) do
     prereqs()
     fix()
@@ -40,7 +45,7 @@ defmodule Arthur do
 
   defp quality() do
     run("mix test --cover")
-    run("mix credo")
+    run("mix credo --all --strict")
   end
 
   defp run_hooks(arthur_command, timing) do
