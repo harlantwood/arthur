@@ -5,6 +5,7 @@ defmodule Arthur do
 
   def main(["push"]) do
     check_clean()
+    run("mix deps.get")
     run("mix test --cover")
     run("mix format")
     check_clean()
