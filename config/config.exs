@@ -1,20 +1,20 @@
 use Mix.Config
 
-# config :arthur, :push,
-#  pre: [
-#    "echo 'Running `pre` hook during `push` command'"
-#  ],
-#  post: [
-#    "echo 'Running `post` hook during `push` command'"
-#  ]
-#
-# config :arthur, :ci,
-#  pre: [
-#    "echo 'Running `pre` hook during `ci` command'"
-#  ],
-#  post: [
-#    "echo 'Running `post` hook during `ci` command'"
-#  ]
+config :arthur, :push,
+  pre: [
+    "echo 'Running `pre` hook during `push` command'"
+  ],
+  post: [
+    "echo 'Running `post` hook during `push` command'"
+  ]
+
+config :arthur, :ci,
+  pre: [
+    "echo 'Running `pre` hook during `ci` command'"
+  ],
+  post: [
+    "echo 'Running `post` hook during `ci` command'"
+  ]
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
