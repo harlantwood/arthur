@@ -9,6 +9,7 @@ defmodule Arthur do
 
   def main(["push" | opts]) do
     check_clean()
+    run_hooks(:push, :pre)
     run("mix deps.get")
     run("mix test --cover")
     fix()

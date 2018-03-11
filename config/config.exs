@@ -1,6 +1,9 @@
 use Mix.Config
 
 config :arthur, :push,
+  pre: [
+    "echo 'Running `pre` hook during `push` command'"
+  ],
   post: [
     "echo 'Running `post` hook during `push` command'"
   ]
