@@ -4,14 +4,15 @@ defmodule Arthur do
   end
 
   def main(["fix"]) do
+    prereqs()
     fix()
   end
 
   def main(["push" | opts]) do
     check_clean()
     run_hooks(:push, :pre)
-    run("mix deps.get")
-    run("mix test --cover")
+    prereqs()
+    quality()
     fix()
     run_hooks(:push, :post)
     check_clean()
@@ -20,7 +21,7 @@ defmodule Arthur do
 
   def main(["ci"]) do
     run_hooks(:ci, :pre)
-    run("mix test --cover")
+    quality()
     run("mix format --check-formatted")
     run_hooks(:ci, :post)
   end
@@ -29,8 +30,17 @@ defmodule Arthur do
     error("unexpected arguments #{inspect(argv)}")
   end
 
+  def prereqs() do
+    run("mix deps.get")
+  end
+
   defp fix() do
     run("mix format")
+  end
+
+  defp quality() do
+    run("mix test --cover")
+    run("mix credo")
   end
 
   defp run_hooks(arthur_command, timing) do
