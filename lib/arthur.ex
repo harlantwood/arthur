@@ -3,7 +3,7 @@ defmodule Arthur do
     error("you need args...")
   end
 
-  def main(["push"]) do
+  def main(["push" | opts]) do
     check_clean()
     run("mix deps.get")
     run("mix test --cover")
