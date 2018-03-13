@@ -2,7 +2,7 @@ alias Bunt.ANSI, as: BuntANSI
 
 defmodule Arthur do
   @moduledoc """
-  Arthur helps you keep your Elixir code quality high!
+  Helping you keep your code quality high
   """
 
   def main([]) do
@@ -51,7 +51,7 @@ defmodule Arthur do
 
   defp quality do
     run("mix test --cover")
-    run("mix credo --all --strict")
+    run("mix credo --verbose --all --all-priorities --strict")
   end
 
   defp run_hooks(arthur_command, timing) do
